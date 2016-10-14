@@ -1,0 +1,130 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title> Assignment 02</title>
+	</head>
+	<style>
+	@keyframes fadeBox{
+		0% {bottom:-5vh;}
+		50% {bottom:0vh;}
+		100% {bottom:-5vh;}
+	}
+	body{
+		margin:0;
+	}
+	#inputArea{
+		margin:1vh 0 0 1vh;
+	}
+	.button{
+		position:relative;
+		width:5vw;
+		height:5vw;
+		border:2px solid black;
+		font-size:1vw;
+		border-radius: 4px;
+	}
+	#addBut{
+		border:2px solid blue;	
+	}
+	#clearBut{
+		position:absolute;
+		right:2%;
+		border:2px solid red;
+	}
+	.inputBox{
+		width:15vw;
+		height:5vw;
+		border:2px solid black;
+		border-radius: 4px;
+	}
+	
+	#msgBox{
+		display:inline-block;
+		border:2px solid black;
+		background-color:#FFFF99;
+		position:relative;
+		width:40vw;
+		height:auto;
+		margin:5px 0 0 25vw;
+		border-radius: 4px;
+	}
+	#msgBox p{
+		width:100%;
+		word-wrap:break-word;
+	}
+	#msgBox h3{
+		position:relative;
+		width:100%;
+		word-wrap:break-word;
+		margin:0;
+	}
+	#msgBox img{
+		position:realtive;
+		height:5vw;
+		width:5vw;
+		float:left;
+		margin:2%;
+	}
+	#popMsg{
+		position:fixed;
+		height:5vh;
+		width:100%;
+		bottom:-7vh;
+		background-color:green;
+		border:2px solid black;
+		animation-name:;
+		animation-duration:2s;
+		animation-iteration-count:1;
+		text-align:center;
+		font: bold 100% arial;
+	}
+	</style>
+	<body>
+		<div id = 'inputArea'>
+		<button id='addBut' class= 'button'>ADD</button>
+		<input id='inputHead' class='inputBox' type='text' placeholder='Enter head line'>
+		<input id='inputText' class='inputBox' type='text' placeholder='Enter text'>
+		<input id='inputImg' class='inputBox' type='text' placeholder='Enter img url'>
+		<button id='clearBut' class= 'button'>CLEAR</button>
+		<div id='disPlay'>
+		</div>	
+		</div>
+		<div id='popMsg'></div>
+		<script>
+			// button from html
+			var addBut = document.getElementById('addBut');
+			var clearBut = document.getElementById('clearBut');
+			// display from html
+			var disPlay = document.getElementById('disPlay');
+			var popMsg = document.getElementById('popMsg');
+			// add button onclick
+			addBut.onclick = function(){
+				var divObj = document.createElement('div');
+				divObj.id = 'msgBox';
+				var img = ''
+				
+				if (inputImg.value){
+				var img ='<img src=' + '"' + inputImg.value + '"' + '>' ;
+				}
+				var text = '<p>' + inputText.value + '</p>';
+				var headline = '<h3>'+ inputHead.value +'</h3>';
+				divObj.innerHTML = '<div>' + img + headline + text + '</div>';
+				disPlay.appendChild(divObj);
+				popMsg.innerHTML = 'Created Item';
+				popMsg.style.animationName = '';
+				setTimeout(fadeAnime,000);
+			}
+			function fadeAnime(){
+				popMsg.style.animationName = 'fadeBox';
+			}
+			
+			clearBut.onclick = function(){
+				disPlay.innerHTML = '';
+				popMsg.innerHTML = 'Cleared items';
+				popMsg.style.animationName = '';
+				setTimeout(fadeAnime,000);
+			}
+		</script>
+	</body>
+	
+</html>
